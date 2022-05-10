@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link
+            href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900"
+            rel="stylesheet"
+    />
+
+    <title>Anina Camara - diplomová práca</title>
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="assets/css/fontawesome.css" />
+    <link rel="stylesheet" href="assets/css/templatemo-style.css" />
+    <link rel="stylesheet" href="assets/css/owl.css" />
+    <link rel="stylesheet" href="assets/css/lightbox.css" />
+</head>
+<body>
+<div id="page-wraper">
+    <!-- Sidebar Menu -->
+    <div class="responsive-nav">
+        <i class="fa fa-bars" id="menu-toggle"></i>
+        <div id="menu" class="menu">
+            <i class="fa fa-times" id="menu-close"></i>
+            <div class="container">
+                <div class="image">
+                    <img src="assets/images/author-image.jpg" alt="author image" />
+                </div>
+                <div class="author-content">
+                    <h4>Bc.Anna Camara</h4>
+                    <span>Anina</span>
+                </div>
+                <nav class="main-nav" role="navigation">
+                    <ul class="main-menu">
+                        <li class = "active"><a href="index.html" >Diploma thesis</a></li>
+
+                        <ul class="sub-menu">
+                            <li><a href="#section1">Abstract</a></li>
+                            <li><a href="#section2">Literature</a></li>
+                        </ul>
+                        <?php
+                        <li><a href="progress.php"  >Progress Calendar</a></li>
+                    </ul>
+                </nav>
+                <div class="copyright-text">
+                    <p>Copyright 2019 Reflux Design
+                        <br>
+                        Adjustments 2022 Anna Camara
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="section abstract" data-section="section1" id="section1" >
+        <div class="container">
+            <div class="section-heading">
+                <h2>Abstract</h2>
+                <div class="line-dec"></div>
+                <span>Person identification with partially occluded face.</span>
+                <p class="text-left"> The goal of the thesis is to identify a person in case when face is partially
+                    occluded for example with sunglasses or face mask. Study the topic of person
+                    identification based on the face. Analyze the performance of the existing
+                    solutions published in the literature. Propose a new method based on a neural
+                    network, which can find and identify a person. Create a dataset for training and
+                    testing purposes. Evaluate the proposed method and draw the conclusions.</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="section-heading">
+                <h2>Goals</h2>
+                <div class="line-dec"></div>
+                <p class="text-left">
+                <ul class="ul-left">
+                    <li>Discover what is true about face identification working worse for people of color. Why and how to fix it.</li>
+                    <li>Find a good database for my task. Potentially modify already existing database.</li>
+                    <li>Focuse on face oclusion by face mask.</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section literature" data-section="section2">
+        <div class="container">
+            <div class="section-heading">
+                <h2>Literature</h2>
+                <div class="line-dec"></div>
+                <span>This is all of the literature I read to get familiar with the topic</span>
+                <p class="text-left">
+                <table>
+                    <tr>
+                        <th>Name of the article</th>
+                        <th>link</th>
+                    </tr>
+                    <tr>
+                        <td>Face Recognition Performance: Role of Demographic Information</td>
+                        <td><a href="https://www.researchgate.net/publication/260299859_Face_Recognition_Performance_Role_of_Demographic_Information" target="_blank"> link to the article </a></td>
+                    </tr>
+                    <tr>
+                        <td>Gender Shades: Intersectional Accuracy Disparities in
+                            Commercial Gender Classification</td>
+                        <td><a href="http://proceedings.mlr.press/v81/buolamwini18a/buolamwini18a.pdf" target="_blank"> link to the article </a></td>
+                    </tr>
+                    <tr>
+                        <td>Is facial recognition technology worse at identifying darker-skinned faces than lighter ones?</td>
+                        <td><a href="https://www.abc.net.au/news/2020-02-04/fact-check-facial-recognition-darker-skin/11781192?nw=0&r=Interactive" target="_blank"> link to the article </a></td>
+                    </tr>
+
+                </table>
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+<script src="vendor/jquery/jquery.min.js"></script>
+<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script src="assets/js/isotope.min.js"></script>
+<script src="assets/js/owl-carousel.js"></script>
+<script src="assets/js/lightbox.js"></script>
+<script src="assets/js/custom.js"></script>
+<script>
+    //according to loftblog tut
+    // $(".main-menu li:first").addClass("active");
+
+    var showSection = function showSection(section, isAnimate) {
+        var direction = section.replace(/#/, ""),
+            reqSection = $(".section").filter(
+                '[data-section="' + direction + '"]'
+            ),
+            reqSectionPos = reqSection.offset().top - 0;
+
+        if (isAnimate) {
+            $("body, html").animate(
+                {
+                    scrollTop: reqSectionPos
+                },
+                800
+            );
+        } else {
+            $("body, html").scrollTop(reqSectionPos);
+        }
+    };
+
+    var checkSection = function checkSection() {
+        $(".section").each(function() {
+            var $this = $(this),
+                topEdge = $this.offset().top - 80,
+                bottomEdge = topEdge + $this.height(),
+                wScroll = $(window).scrollTop();
+
+            if (topEdge < wScroll && bottomEdge > wScroll) {
+                var currentId = $this.data("section"),
+                    reqLink = $("a").filter("[href*=\\#" + currentId + "]");
+                reqLink
+                    .closest("li")
+                    .addClass("active")
+                    .siblings()
+                    .removeClass("active");
+            }
+        });
+    };
+
+    $(".sub-menu").on("click", "a", function(e) {
+        e.preventDefault();
+        showSection($(this).attr("href"), true);
+    });
+
+    $(window).scroll(function() {
+        checkSection();
+    });
+</script>
+</body>
+</html>
