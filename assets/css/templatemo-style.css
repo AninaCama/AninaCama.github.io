@@ -462,6 +462,9 @@ td a:hover{
     color: #ad5058;
 }
 
+.article-name{
+    width: max-content;
+}
 @media screen and (max-width: 1680px) {
     .menu {
         left: 5%;
